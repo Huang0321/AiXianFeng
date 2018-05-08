@@ -4,9 +4,9 @@ from django.db import models
 
 
 class Main(models.Model):
-    img = models.CharField(max_length=200) #图片
-    name = models.CharField(max_length=100) # 名称
-    trackid = models.CharField(max_length=16) # 通用id
+    img = models.CharField(max_length=200)  # 图片
+    name = models.CharField(max_length=100)  # 名称
+    trackid = models.CharField(max_length=16)  # 通用id
 
     class Meta:
         abstract = True
@@ -125,7 +125,7 @@ class Cart(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User)  # 关联用户
     o_num = models.CharField(max_length=64)
-    # 0 代表已下单,但是未付款， 1 已付款未发货 2 已付款 已发货
+    # 0 代表已下单,但是未付款， 1 已付款未发货
     o_status = models.IntegerField(default=0)  # 状态
     o_create = models.DateTimeField(auto_now_add=True)  # 创建时间
 

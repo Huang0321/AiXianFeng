@@ -7,19 +7,24 @@
     <h3>待付款订单列表</h3>
 
     <ul>
-        <!--订单信息展示-->
+        {# 订单信息展示 #}
+        {% if goods_not_pay %}
+            {% for good in goods_not_pay %}
             <li>
                 <a href="">
-                    <p><!-- 订单id --></p>
-                    <p><!-- 数量 --></p>
-                        <!--展示商品的名称-->
-                        <li>
-                            <img src="" alt="">
-                        </li>
-                        <!--处理结束-->
+                    <p>{# 订单id #}</p>
+                    <p>{# 数量 #}</p>
+                        {{ good.productname }}
+                        {# 展示商品的名称 #}
+                        <ul>
+                            <img src="{{ good.productimg }}" alt="">
+                        </ul>
+                        {# 处理结束 #}
                 </a>
             </li>
-        <!--订单处理结束-->
+            {% endfor %}
+        {% endif %}
+        {# 订单处理结束 #}
 
 
     </ul>

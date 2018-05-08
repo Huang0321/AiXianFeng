@@ -38,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'AXF',
+    'user',
+    'cart',
+    'market',
+    'order',
+    'mine',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +134,15 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+REST_FRAMEWORK = {
+    # 设置搜索
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',
+                                'rest_framework.filters.SearchFilter'),
+    # 返回结构自定义
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'utils.RenderResponse.CustomJsonRenderer',
+    # )
+}

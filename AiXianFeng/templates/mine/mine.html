@@ -15,26 +15,34 @@
     <div id="mine">
 
         <div class="fixed">
-            <!--如果登录，展示头像-->
-                <img src="" alt="icon">
-            <!--或者-->
+{#            <!--如果登录，展示头像-->#}
+            {% if user.id %}
+                <img src="/media/{{ user.icon }}" alt="icon">
+            {% else %}
+{#            <!--或者-->#}
                 <span class="glyphicon glyphicon-user"></span>
-            <!--判断结束-->
-
-            <!--如果登录，展示姓名-->
-                <p></p>
-            <!--或者展示登录的链接-->
+{#            <!--判断结束-->#}
+            {% endif %}
+            {% if user.id %}
+{#            <!--如果登录，展示姓名-->#}
+                <p>{{ user.username }}</p>
+            {% else %}
+{#            <!--或者展示登录的链接-->#}
                 <a href=""></a>
-            <!--判断结束-->
+            {% endif %}
+{#            <!--判断结束-->#}
 
 
 
             <p><span class="glyphicon glyphicon-fire"></span><span>等级</span></p>
-            <!--如果没有登录,展示注册信息-->
+{#            <!--如果没有登录,展示注册信息-->#}
+            {% if user.id %}
+            {% else %}
                 <div id="regis">
                     <a href="">注册</a>
                 </div>
-            <!--判断结束-->
+            {% endif %}
+{#            <!--判断结束-->#}
 
             <p><span class="glyphicon glyphicon-heart"></span><span>收藏</span></p>
 
@@ -49,21 +57,27 @@
                 <ul>
                     <li>
                         <dl>
+                            <a href="/mine/mine_not_pay/">
                             <dt><span id="wait_pay_list" class="glyphicon glyphicon-usd"></span>
                                 <span class="badge">
-                                    <!--代付款的数量-->
+                                    {{ num1 }}
+{#                                    <!--代付款的数量-->#}
                                 </span></dt>
                             <dd>待付款</dd>
+                            </a>
                         </dl>
 
                     </li>
                     <li>
                         <dl>
+                            <a href="/mine/mine_not_recieve/">
                             <dt><span id="order_payed_list" class="glyphicon glyphicon-envelope"></span>
                                 <span class="badge">
-                                    <!--待收货的数量-->
+                                    {{ num2 }}
+{#                                    <!--待收货的数量-->#}
                                 </span></dt>
                             <dd>待收货</dd>
+                            </a>
                         </dl>
 
                     </li>
@@ -121,12 +135,13 @@
                 </ul>
             </menu>
 
-            <!--如果登录了,则退出展示-->
-
+{#            <!--如果登录了,则退出展示-->#}
+            {% if user.id %}
                 <p class="logout">
-                    <a href="">退出</a>
+                    <a href="/user/logout/">退出</a>
                 </p>
-            <!--判断结束-->
+            {% endif %}
+{#            <!--判断结束-->#}
         </div>
     </div>
 

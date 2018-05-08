@@ -7,19 +7,23 @@
     <h3>待收货订单列表</h3>
 
     <ul>
-        <!--订单展示-->
+        {# 订单展示 #}
+        {% if goods_not_recieve %}
+        {% for good in goods_not_recieve %}
             <li>
                 <a href="#">
-                    <p><!-- 订单id --></p>
-                    <p><!-- 数量 --></p>
-                        <!--展示商品的名称-->
-                        <li>
-                            <img src="{{ ordermodel.goods.productimg }}" alt="">
-                        </li>
-                        <!--处理结束-->
+                    <p>{# 订单id #}</p>
+                    <p>{# 订单数量 #}</p>
+                        {# 展示商品的名称 #}{{ good.productname }}
+                        <ul>
+                            <img src="{{ good.prodectimg }}" alt="">
+                        </ul>
+                        {# 处理结束 #}
                 </a>
             </li>
-        <!--订单处理结束-->
+        {# 订单处理结束 #}
+        {% endfor %}
+        {% endif  %}
 
     </ul>
 

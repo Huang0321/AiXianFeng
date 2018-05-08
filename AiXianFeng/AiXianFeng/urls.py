@@ -16,8 +16,20 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from AiXianFeng import settings
+
+from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^axf/', include('AXF.urls'))
+    url(r'^axf/', include('AXF.urls', namespace='axf')),
+    url(r'^user/', include('user.urls', namespace='user')),
+    url(r'^cart/', include('cart.urls', namespace='cart')),
+    url(r'^market/', include('market.urls', namespace='market')),
+    url(r'^order/', include('order.urls', namespace='order')),
+    url(r'^mine/', include('mine.urls', namespace='mine')),
 ]
+
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
